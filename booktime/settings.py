@@ -77,12 +77,10 @@ WSGI_APPLICATION = 'booktime.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER' : 'dann',
-        'PASSWORD' : 'dann1223',
-        'HOST' : '127.0.0.1',
-        'PORT' : '5432',
+
+        'ENGINE': 'django.db.backends.sqlite3',
+
+        'NAME': 'myDB.sqlite3'
     }
 }
 
@@ -164,3 +162,16 @@ LOGGING = {
         },
     },
 }
+
+
+if not DEBUG : 
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST_USER =  "username"
+    EMAIL_HOST = 'smtp.domain.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_PASSWORD = 'password'
+else:
+    EMAIL_BACKEND = (
+        "django.core.mail.backends.console.EmailBackend"
+    )
